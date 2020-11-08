@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Sunshine Medical Clinic</string>
+    <string name="sunshinesplashpic">sunshineSplashPic</string>
 </resources>
