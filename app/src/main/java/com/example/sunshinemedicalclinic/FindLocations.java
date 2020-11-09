@@ -4,16 +4,28 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.os.Bundle;
 
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.ArrayList;
 
 public class FindLocations extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+
+    // These arraylists will hold the coordinates and names of clinics
+    ArrayList<LatLng> locationsXY = new ArrayList<LatLng>() ;
+    ArrayList<String> locationsName = new ArrayList<String>() ;
+
+    // Initializing clinics
+    LatLng dundas_hurontario = new LatLng( 43.581343,-79.61709 );
+    LatLng bloor_yonge = new LatLng( 43.670786 ,-79.385687) ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +35,14 @@ public class FindLocations extends FragmentActivity implements OnMapReadyCallbac
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+
+        //add coordinates and names to the array lists
+        locationsXY.add(dundas_hurontario);
+        locationsXY.add(bloor_yonge) ;
+
+        locationsName.add("Dundas-Hurontario") ;
+        locationsName.add("Bloor-Yonge") ;
     }
 
     /**
@@ -38,9 +58,21 @@ public class FindLocations extends FragmentActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        // loop for adding markers / setting names
+        for(int i=0 ; i<locationsXY.size() ; i++){
+            for(int j=0 ; j<locationsName.size() ; j++){
+                mMap.addMarker(new MarkerOptions().position(locationsXY.get(i)).title(String.valueOf(locationsName.get(i))));
+            }
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(locationsXY.get(i))) ;
+        }
+
+
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                String name = marker.getTitle() ;
+
+            }
+        });
     }
 }
