@@ -41,10 +41,10 @@ public class CRUDoperations extends AppCompatActivity {
         Button btnShow = findViewById(R.id.btnShow);
         final TextView showPatient = findViewById(R.id.showText);
         //Update data
-        EditText updHealthcardNo = findViewById(R.id.updHealthcardNo);
-        EditText updFName = findViewById(R.id.updFName);
-        EditText updLName = findViewById(R.id.updLName);
-        EditText updPhoneNo = findViewById(R.id.updPhoneNo);
+        final EditText updHealthcardNo = findViewById(R.id.updHealthcardNo);
+        final EditText updFName = findViewById(R.id.updFName);
+        final EditText updLName = findViewById(R.id.updLName);
+        final EditText updPhoneNo = findViewById(R.id.updPhoneNo);
         Button btnUpdate = findViewById(R.id.btnUpdate);
         //Delete data
         final EditText delHealthcardNo = findViewById(R.id.delHealthcardNo);
@@ -108,7 +108,58 @@ public class CRUDoperations extends AppCompatActivity {
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                int usrHealthcardNo = Integer.parseInt(updHealthcardNo.getText().toString());
+                String usrFName = updFName.getText().toString();
+                String usrLName = updLName.getText().toString();
+                String usrPhoneNo = updPhoneNo.getText().toString();
+                if (!usrFName.matches("")){
+                    db.collection("patients").document(String.valueOf(usrHealthcardNo))
+                            .update("fname", usrFName)
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Log.d(TAG, "DocumentSnapshot successfully updated!");
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.w(TAG, "Error updating document", e);
+                                }
+                            });
+                }
+                if (!usrLName.matches("")){
+                    db.collection("patients").document(String.valueOf(usrHealthcardNo))
+                            .update("lname", usrLName)
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Log.d(TAG, "DocumentSnapshot successfully updated!");
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.w(TAG, "Error updating document", e);
+                                }
+                            });
+                }
+                if (!usrPhoneNo.matches("")){
+                    db.collection("patients").document(String.valueOf(usrHealthcardNo))
+                            .update("phone", usrPhoneNo)
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Log.d(TAG, "DocumentSnapshot successfully updated!");
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.w(TAG, "Error updating document", e);
+                                }
+                            });
+                }
             }
         });
 
