@@ -22,7 +22,7 @@ MediaPlayer openingSound = new MediaPlayer();
             public void run() {
                 openingSound.stop();
                 finish();
-                startActivity(new Intent(SplashScreen.this, MainActivity.class));
+                startActivity(new Intent(SplashScreen.this,CRUDoperations.class));
             }
         };
 
