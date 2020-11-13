@@ -41,8 +41,8 @@ public class FindLocations extends FragmentActivity implements OnMapReadyCallbac
         locationsXY.add(dundas_hurontario);
         locationsXY.add(bloor_yonge) ;
 
-        locationsName.add("Dundas-Hurontario") ;
-        locationsName.add("Bloor-Yonge") ;
+        locationsName.add("Dundas-Hurontario Clinic") ;
+        locationsName.add("Bloor-Yonge Clinic") ;
     }
 
     /**
@@ -71,7 +71,7 @@ public class FindLocations extends FragmentActivity implements OnMapReadyCallbac
             @Override
             public boolean onMarkerClick(Marker marker) {
                 String name = marker.getTitle() ;
-
+                return true ;
             }
         });
     }

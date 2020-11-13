@@ -7,4 +7,25 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+    <!--Array list of clinic names-->
+
+    <string-array name="clinicNames">
+        <item>Dundas and Hurontario</item>
+        <item>Bloor and Christie</item>
+    </string-array>
+
+    <!--Array list of clinic phone numbers-->
+    <string-array name="clinicPhones">
+        <item>"tel:5559671111"</item>
+        <item>"tel:5553825968"</item>
+    </string-array>
+
+    <!--Array list of clinic email addresses-->
+    <string-array name="clinicEmails">
+        <item>"HurontarioDundasClinic@sunshinemedicine.ca"</item>
+        <item>"ChristieBloorClinic@sunshinemedicine.ca"</item>
+    </string-array>
+
+
 </resources>

@@ -39,12 +39,17 @@
 
         <activity android:name=".CRUDoperations" />
         <activity android:name=".BookAppointment" />
-        <activity android:name=".ContactUs" />
+
+        <activity android:name=".ContactUs">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
