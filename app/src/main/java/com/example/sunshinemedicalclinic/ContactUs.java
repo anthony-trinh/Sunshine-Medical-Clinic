@@ -19,8 +19,6 @@ import java.net.URI;
 import java.util.ArrayList;
 
 public class ContactUs extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    String phone = "";
-    String email = "";
     int flag = 0 ;
     int index ;
 
@@ -38,8 +36,7 @@ public class ContactUs extends AppCompatActivity implements AdapterView.OnItemSe
         clinicSpinner.setOnItemSelectedListener(this) ;
         Button callButton = findViewById(R.id.callButton) ;
         Button emailButton = findViewById(R.id.emailButton) ;
-        TextView txtPhone = findViewById(R.id.txtPhoneNo);
-        TextView txtEmail = findViewById(R.id.txtEmail);
+
 
         callButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,11 +64,12 @@ public class ContactUs extends AppCompatActivity implements AdapterView.OnItemSe
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         TextView txtPhone = findViewById(R.id.txtPhoneNo);
         TextView txtEmail = findViewById(R.id.txtEmail);
+
         String text = parent.getItemAtPosition(position).toString() ;
         index = position ;
         flag = 1 ;
-        txtPhone.setText(getResources().getStringArray(R.array.clinicPhones)[index]);
-        txtEmail.setText(getResources().getStringArray(R.array.clinicEmails)[index]);
+        txtPhone.setText("Phone: " + (getResources().getStringArray(R.array.clinicPhones)[index].substring(4)));
+        txtEmail.setText("Email: " + getResources().getStringArray(R.array.clinicEmails)[index]);
     }
 
     @Override
