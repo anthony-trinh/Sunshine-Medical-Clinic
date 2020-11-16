@@ -9,24 +9,22 @@ import android.os.Bundle;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class SplashScreen extends AppCompatActivity {
-    MediaPlayer openingSound = new MediaPlayer();
+public class bookingSuccess extends AppCompatActivity {
+    MediaPlayer successSound = new MediaPlayer();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash_screen);
-        openingSound = MediaPlayer.create(this, R.raw.whoosh);
-        openingSound.start();
+        setContentView(R.layout.activity_booking_success);
+        successSound = MediaPlayer.create(this, R.raw.whoosh);
+        successSound.start();
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
-                openingSound.stop();
+                successSound.stop();
                 finish();
-                startActivity(new Intent(SplashScreen.this,BookAppointment.class));
             }
         };
-
-        Timer opening = new Timer();
-        opening.schedule(task, 3500);
+        //Timer opening = new Timer();
+        //opening.schedule(task, 3500);
     }
 }
