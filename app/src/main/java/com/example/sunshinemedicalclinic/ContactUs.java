@@ -57,7 +57,6 @@ public class ContactUs extends AppCompatActivity implements AdapterView.OnItemSe
                     startActivity(emailIntent) ;
             }
         });
-
     }
 
     @Override

@@ -3,6 +3,7 @@ package com.example.sunshinemedicalclinic;
 import androidx.fragment.app.FragmentActivity;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -70,7 +71,11 @@ public class FindLocations extends FragmentActivity implements OnMapReadyCallbac
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-                String name = marker.getTitle() ;
+                String clinicName = marker.getTitle() ;
+                MapFragment mapFragment = new MapFragment() ;
+                mapFragment.show(getSupportFragmentManager(), "myFragment") ;
+                mapFragment.setName(clinicName) ;
+                Toast.makeText(FindLocations.this, clinicName, Toast.LENGTH_LONG).show();
                 return true ;
             }
         });
