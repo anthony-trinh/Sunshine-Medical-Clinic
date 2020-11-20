@@ -6,17 +6,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.lang.reflect.Array;
-import java.net.URI;
-import java.util.ArrayList;
 
 public class ContactUs extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     int flag = 0 ;
@@ -62,7 +56,7 @@ public class ContactUs extends AppCompatActivity implements AdapterView.OnItemSe
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         TextView txtPhone = findViewById(R.id.txtPhoneNo);
-        TextView txtEmail = findViewById(R.id.txtEmail);
+        TextView txtEmail = findViewById(R.id.logEmail);
 
         String text = parent.getItemAtPosition(position).toString() ;
         index = position ;

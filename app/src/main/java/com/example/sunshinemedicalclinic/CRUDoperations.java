@@ -14,7 +14,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -35,7 +34,7 @@ public class CRUDoperations extends AppCompatActivity {
         final EditText addSex = findViewById(R.id.addSex);
         final EditText addPhoneNo = findViewById(R.id.addPhoneNo);
         final EditText addDOB = findViewById(R.id.addDOB);
-        Button btnCreate = findViewById(R.id.btnCreate);
+        Button btnCreate = findViewById(R.id.btnRegister);
         //Retrieve data
         final EditText retHealthcardNo = findViewById(R.id.retHealthcardNo);
         Button btnShow = findViewById(R.id.btnShow);

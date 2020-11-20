@@ -56,7 +56,7 @@
         app:layout_constraintTop_toBottomOf="@+id/clinicSpinner" />
 
     <TextView
-        android:id="@+id/txtEmail"
+        android:id="@+id/logEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="18sp"
@@ -75,6 +75,6 @@
         app:layout_constraintEnd_toEndOf="@+id/callButton"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/callButton"
-        app:layout_constraintTop_toBottomOf="@+id/txtEmail"
+        app:layout_constraintTop_toBottomOf="@+id/logEmail"
         app:layout_constraintVertical_bias="0.165" />
 </androidx.constraintlayout.widget.ConstraintLayout>

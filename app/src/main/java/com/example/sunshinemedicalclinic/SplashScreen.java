@@ -22,7 +22,7 @@ public class SplashScreen extends AppCompatActivity {
             public void run() {
                 openingSound.stop();
                 finish();
-                startActivity(new Intent(SplashScreen.this,BookAppointment.class));
+                startActivity(new Intent(SplashScreen.this,Register.class));
             }
         };
 
