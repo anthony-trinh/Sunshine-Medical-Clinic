@@ -33,4 +33,6 @@
     <string name="password">Password:</string>
     <string name="account_login">Account Login</string>
     <string name="login">Login</string>
+    <string name="must_book_at_least_one_day_in_advance">(must book at least one day in advance)</string>
+    <string name="new_user_create_account_here">New User? Create Account Here.</string>
 </resources>
