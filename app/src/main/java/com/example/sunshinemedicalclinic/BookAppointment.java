@@ -1,9 +1,13 @@
 package com.example.sunshinemedicalclinic;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -19,6 +23,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -33,6 +38,7 @@ import java.util.Map;
 import java.util.TimerTask;
 
 public class BookAppointment extends AppCompatActivity {
+    DrawerLayout drawerLayout;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     private static final String TAG = "BookAppointment";
     String clinicName ;
@@ -42,7 +48,7 @@ public class BookAppointment extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_appointment);
-
+        drawerLayout = findViewById(R.id.drawer_layout);
         final Spinner clinicSpinner = findViewById(R.id.clinicSpinner) ;
         ArrayAdapter<CharSequence> adapterNames = ArrayAdapter.createFromResource(this, R.array.clinicNames, android.R.layout.simple_spinner_item) ;
         clinicSpinner.setAdapter(adapterNames) ;
@@ -57,7 +63,7 @@ public class BookAppointment extends AppCompatActivity {
         Button confirm = findViewById(R.id.btnConfirm);
         final TextView dateSelected = findViewById(R.id.txtDate);
         final EditText healthcard = findViewById(R.id.edtHealthcard);
-        final DateFormat date = DateFormat.getDateInstance();
+        final DateFormat date = DateFormat.getDateTimeInstance();
         final Calendar c = Calendar.getInstance();
         final DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -110,7 +116,44 @@ public class BookAppointment extends AppCompatActivity {
             }
         });
     }
-
+    public void ClickMenu (View view){
+        MainActivity.closeopenDrawer(drawerLayout);
+    }
+    public void ClickHome (View view){
+        startActivity(new Intent(this, MainActivity.class));
+    }
+    public void ClickBook (View view){
+        recreate();
+    }
+    public void ClickLocations (View view){
+        startActivity(new Intent(this, FindLocations.class));
+    }
+    public void ClickMyAccount (View view){
+        startActivity(new Intent(this, MainActivity.class));
+    }
+    public void ClickContactUs(View view){
+        startActivity(new Intent(this, ContactUs.class));
+    }
+    public void ClickLogout (View view){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Logout").setMessage("Are you sure you want to logout?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(BookAppointment.this, "Logging out", Toast.LENGTH_SHORT).show();
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(BookAppointment.this, Login.class));
+                finish();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.show();
+    }
     public void setName(String name){
         clinicName = name ;
     }
