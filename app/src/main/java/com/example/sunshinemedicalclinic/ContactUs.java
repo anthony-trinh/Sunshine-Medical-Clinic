@@ -12,9 +12,13 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class ContactUs extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     int flag = 0 ;
     int index ;
+    String clinicName ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +34,11 @@ public class ContactUs extends AppCompatActivity implements AdapterView.OnItemSe
         clinicSpinner.setOnItemSelectedListener(this) ;
         Button callButton = findViewById(R.id.callButton) ;
         Button emailButton = findViewById(R.id.emailButton) ;
+
+        final ArrayList<String> clinicNames = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.clinicNamesAlt))) ;
+        clinicName = getIntent().getExtras().getString("selectClinic") ;
+        index = clinicNames.indexOf(clinicName) ;
+        clinicSpinner.setSelection(index) ;
 
 
         callButton.setOnClickListener(new View.OnClickListener() {

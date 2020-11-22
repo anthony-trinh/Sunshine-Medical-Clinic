@@ -1,7 +1,10 @@
 package com.example.sunshinemedicalclinic;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -11,6 +14,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -43,7 +47,7 @@ public class FindLocations extends FragmentActivity implements OnMapReadyCallbac
         locationsXY.add(bloor_yonge) ;
 
         locationsName.add("Dundas-Hurontario Clinic") ;
-        locationsName.add("Bloor-Yonge Clinic") ;
+        locationsName.add("Bloor-Christie Clinic") ;
     }
 
     /**
@@ -67,6 +71,12 @@ public class FindLocations extends FragmentActivity implements OnMapReadyCallbac
             mMap.moveCamera(CameraUpdateFactory.newLatLng(locationsXY.get(i))) ;
         }
 
+        LatLngBounds ontarioBounds = new LatLngBounds(
+                new LatLng(43.159660, -80.265443), //SW bound
+                new LatLng(44.088140, -78.862274) //NE bound
+        ) ;
+
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ontarioBounds.getCenter(), 7));
 
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
@@ -74,8 +84,7 @@ public class FindLocations extends FragmentActivity implements OnMapReadyCallbac
                 String clinicName = marker.getTitle() ;
                 MapFragment mapFragment = new MapFragment() ;
                 mapFragment.show(getSupportFragmentManager(), "myFragment") ;
-                mapFragment.setName(clinicName) ;
-                Toast.makeText(FindLocations.this, clinicName, Toast.LENGTH_LONG).show();
+                mapFragment.setName(clinicName.replace(" Clinic","")) ;
                 return true ;
             }
         });

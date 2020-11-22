@@ -8,6 +8,24 @@
     tools:context=".BookAppointment">
 
     <TextView
+        android:id="@+id/txtSelect"
+        android:layout_width="115dp"
+        android:layout_height="21dp"
+        android:layout_marginTop="48dp"
+        android:text="Select a location:"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/rdGrp" />
+
+    <Spinner
+        android:id="@+id/clinicSpinner"
+        android:layout_width="194dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="48dp"
+        app:layout_constraintStart_toStartOf="@+id/rdGrp"
+        app:layout_constraintTop_toBottomOf="@+id/rdGrp" />
+
+    <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

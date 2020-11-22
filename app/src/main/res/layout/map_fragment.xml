@@ -6,48 +6,42 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/mapFragmentText"
-        android:layout_width="248dp"
-        android:layout_height="21dp"
-        android:text="Would you like to book at this location?"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/hoursOfOperation"
+        android:layout_width="195dp"
+        android:layout_height="98dp"
+        android:layout_marginTop="20dp"
+        android:text="Monday: 8:00am - 6:00pm\nTuesday: 8:00am - 6:00pm\nWednesday: 8:00am - 6:00pm\nThursday: 8:00am - 6:00pm\nFriday 8:00am - 6:00pm\nSaturday: 10:00am - 3:00pm\nSunday: Closed"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.389" />
-
-    <Button
-        android:id="@+id/yesButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="38dp"
-        android:background="@drawable/rounded_corners"
-        android:text="yes"
-        app:layout_constraintEnd_toStartOf="@+id/noButton"
-        app:layout_constraintHorizontal_bias="0.166"
-        app:layout_constraintStart_toStartOf="@+id/mapFragmentText"
-        app:layout_constraintTop_toBottomOf="@+id/mapFragmentText" />
-
-    <Button
-        android:id="@+id/noButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:background="@drawable/rounded_corners"
-        android:text="no"
-        app:layout_constraintEnd_toEndOf="@+id/mapFragmentText"
-        app:layout_constraintTop_toBottomOf="@+id/mapFragmentText" />
+        app:layout_constraintTop_toBottomOf="@+id/clinicNameMapFragment" />
 
     <TextView
         android:id="@+id/clinicNameMapFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="44dp"
+        android:layout_marginTop="40dp"
         android:text="textt"
-        app:layout_constraintBottom_toTopOf="@+id/mapFragmentText"
-        app:layout_constraintEnd_toEndOf="@+id/mapFragmentText"
-        app:layout_constraintStart_toStartOf="@+id/mapFragmentText"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/bookAppointmentButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Book an appointment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hoursOfOperation" />
+
+    <Button
+        android:id="@+id/contactButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        android:text="Contact Us"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hoursOfOperation" />
 </androidx.constraintlayout.widget.ConstraintLayout>

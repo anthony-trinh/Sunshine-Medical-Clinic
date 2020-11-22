@@ -23,8 +23,13 @@
 
     <!--Array list of clinic email addresses-->
     <string-array name="clinicEmails">
-        <item>"HurontarioDundasClinic@sunshinemedicine.ca"</item>
-        <item>"ChristieBloorClinic@sunshinemedicine.ca"</item>
+       <item>"HurontarioDundas@sunshinemedicine.ca"</item>
+        <item>"ChristieBloor@sunshinemedicine.ca"</item>
+    </string-array>
+
+    <string-array name="clinicNamesAlt">
+        <item>"Dundas-Hurontario"</item>
+        <item>"Bloor-Christie"</item>
     </string-array>
 
 
