@@ -1,18 +1,26 @@
 package com.example.sunshinemedicalclinic;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.lang.reflect.Array;
 import java.text.DateFormat;
@@ -20,9 +28,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.TimerTask;
 
 public class BookAppointment extends AppCompatActivity {
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private static final String TAG = "BookAppointment";
     String clinicName ;
     int index ;
     MediaPlayer failSound = new MediaPlayer();
@@ -31,11 +43,11 @@ public class BookAppointment extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_appointment);
 
-        Spinner clinicSpinner = findViewById(R.id.clinicSpinner) ;
+        final Spinner clinicSpinner = findViewById(R.id.clinicSpinner) ;
         ArrayAdapter<CharSequence> adapterNames = ArrayAdapter.createFromResource(this, R.array.clinicNames, android.R.layout.simple_spinner_item) ;
         clinicSpinner.setAdapter(adapterNames) ;
         final ArrayList<String> clinicNames = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.clinicNamesAlt))) ;
-        clinicName = getIntent().getExtras().getString("selectClinic") ;
+        clinicName = getIntent().getStringExtra("selectClinic") ;
         index = clinicNames.indexOf(clinicName) ;
         clinicSpinner.setSelection(index) ;
 
@@ -44,6 +56,7 @@ public class BookAppointment extends AppCompatActivity {
         Button dateSelect = findViewById(R.id.btnDate);
         Button confirm = findViewById(R.id.btnConfirm);
         final TextView dateSelected = findViewById(R.id.txtDate);
+        final EditText healthcard = findViewById(R.id.edtHealthcard);
         final DateFormat date = DateFormat.getDateInstance();
         final Calendar c = Calendar.getInstance();
         final DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
@@ -67,7 +80,26 @@ public class BookAppointment extends AppCompatActivity {
                 Date currentDate=java.util.Calendar.getInstance().getTime();
                 if(currentDate.before(c.getTime()))
                 {
-                    startActivity(new Intent(BookAppointment.this, bookingSuccess.class));
+                    final int usrHealthcardNo = Integer.parseInt(healthcard.getText().toString());
+                    Map<String,Object> appointment = new HashMap<>();
+                    appointment.put("clinic", clinicSpinner.getSelectedItem().toString());
+                    appointment.put("healthcard", usrHealthcardNo);
+                    appointment.put("date", date.format(c.getTime()));
+                    db.collection("appointment").add(appointment)
+                            .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                @Override
+                                public void onSuccess(DocumentReference documentReference){
+                                    String appointmentID = documentReference.getId();
+                                    Log.d(TAG, "Appointment booked with ID: " + appointmentID);
+                                    startActivity(new Intent(BookAppointment.this, bookingSuccess.class).putExtra("healthcard", usrHealthcardNo).putExtra("appointmentID", appointmentID));
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.w(TAG, "Error adding patient", e);
+                                }
+                            });
                 }
                 else{
                     failSound.stop();

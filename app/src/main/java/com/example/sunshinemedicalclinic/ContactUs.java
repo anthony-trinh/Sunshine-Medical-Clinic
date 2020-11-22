@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -24,7 +25,6 @@ public class ContactUs extends AppCompatActivity implements AdapterView.OnItemSe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_us);
-
         Spinner clinicSpinner = findViewById(R.id.clinicSpinner) ;
         clinicSpinner.setSelection(0) ;
         ArrayAdapter<CharSequence> adapterNames = ArrayAdapter.createFromResource(this, R.array.clinicNames, android.R.layout.simple_spinner_item) ;
@@ -34,9 +34,8 @@ public class ContactUs extends AppCompatActivity implements AdapterView.OnItemSe
         clinicSpinner.setOnItemSelectedListener(this) ;
         Button callButton = findViewById(R.id.callButton) ;
         Button emailButton = findViewById(R.id.emailButton) ;
-
         final ArrayList<String> clinicNames = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.clinicNamesAlt))) ;
-        clinicName = getIntent().getExtras().getString("selectClinic") ;
+        clinicName = getIntent().getStringExtra("selectClinic") ;
         index = clinicNames.indexOf(clinicName) ;
         clinicSpinner.setSelection(index) ;
 

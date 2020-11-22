@@ -15,16 +15,8 @@ public class bookingSuccess extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_booking_success);
-        successSound = MediaPlayer.create(this, R.raw.whoosh);
+        successSound = MediaPlayer.create(this, R.raw.cheer);
         successSound.start();
-        TimerTask task = new TimerTask() {
-            @Override
-            public void run() {
-                successSound.stop();
-                finish();
-            }
-        };
-        //Timer opening = new Timer();
-        //opening.schedule(task, 3500);
+
     }
 }

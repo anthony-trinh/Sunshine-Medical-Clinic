@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -22,7 +23,8 @@ public class SplashScreen extends AppCompatActivity {
             public void run() {
                 openingSound.stop();
                 finish();
-                startActivity(new Intent(SplashScreen.this,ContactUs.class));
+                Log.d("splash","starting activity");
+                startActivity(new Intent(SplashScreen.this,BookAppointment.class));
             }
         };
 
