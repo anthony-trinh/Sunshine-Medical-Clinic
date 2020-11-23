@@ -3,7 +3,6 @@ package com.example.sunshinemedicalclinic;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.DatePickerDialog;
@@ -17,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,7 +27,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -35,7 +34,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.TimerTask;
 
 public class BookAppointment extends AppCompatActivity {
     DrawerLayout drawerLayout;
@@ -74,6 +72,10 @@ public class BookAppointment extends AppCompatActivity {
                 dateSelected.setText(""+date.format(c.getTime()));
             }
         };
+
+        final RadioButton book = findViewById(R.id.rdBook) ;
+        final RadioButton covidTest = findViewById(R.id.rdTest) ;
+
         dateSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,7 +99,16 @@ public class BookAppointment extends AppCompatActivity {
                                 public void onSuccess(DocumentReference documentReference){
                                     String appointmentID = documentReference.getId();
                                     Log.d(TAG, "Appointment booked with ID: " + appointmentID);
-                                    startActivity(new Intent(BookAppointment.this, bookingSuccess.class).putExtra("healthcard", usrHealthcardNo).putExtra("appointmentID", appointmentID));
+                                    BookingSuccess bookingSuccess = new BookingSuccess() ;
+                                    bookingSuccess.setClinic(clinicSpinner.getSelectedItem().toString()) ;
+                                    bookingSuccess.setTime(date.format(c.getTime())) ;
+                                    if(book.isChecked()){
+                                        bookingSuccess.setType("General appointment at " + clinicSpinner.getSelectedItem().toString()) ;
+                                    }
+                                    if(covidTest.isChecked()){
+                                        bookingSuccess.setType("Booking test at " + clinicSpinner.getSelectedItem().toString());
+                                    }
+                                    bookingSuccess.show(getSupportFragmentManager(),"fragment") ;
                                 }
                             })
                             .addOnFailureListener(new OnFailureListener() {

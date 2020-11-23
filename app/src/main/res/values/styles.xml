@@ -32,5 +32,10 @@
         <item>"Bloor-Christie"</item>
     </string-array>
 
+    <string-array name="clinicAddresses">
+        <item>"45-123 Hurontario Street, Mississauga, ON, Canada"</item>
+        <item>"69-420 Christie Street, Toronto, ON, Canada"</item>
+    </string-array>
+
 
 </resources>
