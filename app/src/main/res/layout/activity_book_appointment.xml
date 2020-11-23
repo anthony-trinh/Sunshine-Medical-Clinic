@@ -33,10 +33,8 @@
             android:id="@+id/clinicSpinner"
             android:layout_width="194dp"
             android:layout_height="23dp"
-            android:layout_marginStart="68dp"
-            android:layout_marginTop="48dp"
-            app:layout_constraintStart_toStartOf="@+id/rdGrp"
-            app:layout_constraintTop_toBottomOf="@+id/rdGrp" />
+            app:layout_constraintStart_toEndOf="@+id/txtSelect"
+            app:layout_constraintTop_toTopOf="@+id/txtSelect" />
 
         <RadioGroup
             android:id="@+id/rdGrp"
