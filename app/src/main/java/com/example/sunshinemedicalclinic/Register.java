@@ -55,7 +55,7 @@ public class Register extends AppCompatActivity {
             public void onClick(View v) {
                 String usrEmail = email.getText().toString().trim();
                 String usrPassword = password.getText().toString().trim();
-
+                final int usrHealthcardNo = Integer.parseInt(healthcardNo.getText().toString());
                 if(TextUtils.isEmpty(usrEmail)){
                     email.setError("Email is required.");
                     return;
@@ -72,7 +72,6 @@ public class Register extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            final int usrHealthcardNo = Integer.parseInt(healthcardNo.getText().toString());
                             String usrFName = fName.getText().toString();
                             String usrLName = lName.getText().toString();
                             String usrSex = sex.getText().toString();

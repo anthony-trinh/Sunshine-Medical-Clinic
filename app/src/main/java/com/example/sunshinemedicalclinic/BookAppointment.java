@@ -129,7 +129,7 @@ public class BookAppointment extends AppCompatActivity {
         startActivity(new Intent(this, FindLocations.class));
     }
     public void ClickMyAccount (View view){
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, MyAccount.class));
     }
     public void ClickContactUs(View view){
         startActivity(new Intent(this, ContactUs.class));

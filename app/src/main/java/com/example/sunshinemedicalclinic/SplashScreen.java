@@ -24,7 +24,7 @@ public class SplashScreen extends AppCompatActivity {
                 openingSound.stop();
                 finish();
                 Log.d("splash","starting activity");
-                startActivity(new Intent(SplashScreen.this,MainActivity.class));
+                startActivity(new Intent(SplashScreen.this,Register.class));
             }
         };
 

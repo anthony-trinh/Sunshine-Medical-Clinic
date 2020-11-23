@@ -81,7 +81,7 @@ public class ContactUs extends AppCompatActivity implements AdapterView.OnItemSe
         startActivity(new Intent(this, FindLocations.class));
     }
     public void ClickMyAccount (View view){
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, MyAccount.class));
     }
     public void ClickContactUs(View view){
         startActivity(new Intent(this, ContactUs.class));
