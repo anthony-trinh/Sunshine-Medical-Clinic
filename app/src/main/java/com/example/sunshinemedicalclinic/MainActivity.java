@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void ClickMyAccount (View view)
     {
-        startActivity(new Intent(this, BookAppointment.class));
+        startActivity(new Intent(this, MyAccount.class));
     }
     public void ClickContactUs (View view)
     {
