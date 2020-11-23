@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -21,11 +22,17 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -37,10 +44,12 @@ import java.util.Map;
 
 public class BookAppointment extends AppCompatActivity {
     DrawerLayout drawerLayout;
+    private FirebaseAuth fbAuth = FirebaseAuth.getInstance();
+    final FirebaseUser user = fbAuth.getCurrentUser() ;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     private static final String TAG = "BookAppointment";
-    String clinicName ;
-    int index ;
+    String clinicName;
+    int index, healthcard;
     MediaPlayer failSound = new MediaPlayer();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,9 +69,10 @@ public class BookAppointment extends AppCompatActivity {
         Button dateSelect = findViewById(R.id.btnDate);
         Button confirm = findViewById(R.id.btnConfirm);
         final TextView dateSelected = findViewById(R.id.txtDate);
-        final EditText healthcard = findViewById(R.id.edtHealthcard);
-        final DateFormat date = DateFormat.getDateTimeInstance();
+        //final EditText healthcard = findViewById(R.id.edtHealthcard);
+        final DateFormat date = DateFormat.getDateInstance();
         final Calendar c = Calendar.getInstance();
+
         final DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
@@ -88,27 +98,32 @@ public class BookAppointment extends AppCompatActivity {
                 Date currentDate=java.util.Calendar.getInstance().getTime();
                 if(currentDate.before(c.getTime()))
                 {
-                    final int usrHealthcardNo = Integer.parseInt(healthcard.getText().toString());
-                    Map<String,Object> appointment = new HashMap<>();
+                    Map<String, Object> appointment = new HashMap<>();
                     appointment.put("clinic", clinicSpinner.getSelectedItem().toString());
-                    appointment.put("healthcard", usrHealthcardNo);
+                    appointment.put("email", user.getEmail());
                     appointment.put("date", date.format(c.getTime()));
+                    if (book.isChecked()) {
+                        appointment.put("type", "General Appointment");
+                    }
+                    if (covidTest.isChecked()) {
+                        appointment.put("type", "Covid-19 Test");
+                    }
                     db.collection("appointment").add(appointment)
                             .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                 @Override
-                                public void onSuccess(DocumentReference documentReference){
+                                public void onSuccess(DocumentReference documentReference) {
                                     String appointmentID = documentReference.getId();
                                     Log.d(TAG, "Appointment booked with ID: " + appointmentID);
-                                    BookingSuccess bookingSuccess = new BookingSuccess() ;
-                                    bookingSuccess.setClinic(clinicSpinner.getSelectedItem().toString()) ;
-                                    bookingSuccess.setTime(date.format(c.getTime())) ;
-                                    if(book.isChecked()){
-                                        bookingSuccess.setType("General appointment at " + clinicSpinner.getSelectedItem().toString()) ;
+                                    BookingSuccess bookingSuccess = new BookingSuccess();
+                                    bookingSuccess.setClinic(clinicSpinner.getSelectedItem().toString());
+                                    bookingSuccess.setTime(date.format(c.getTime()));
+                                    if (book.isChecked()) {
+                                        bookingSuccess.setType("General appointment at " + clinicSpinner.getSelectedItem().toString());
                                     }
-                                    if(covidTest.isChecked()){
+                                    if (covidTest.isChecked()) {
                                         bookingSuccess.setType("Booking test at " + clinicSpinner.getSelectedItem().toString());
                                     }
-                                    bookingSuccess.show(getSupportFragmentManager(),"fragment") ;
+                                    bookingSuccess.show(getSupportFragmentManager(), "fragment");
                                 }
                             })
                             .addOnFailureListener(new OnFailureListener() {
