@@ -122,12 +122,8 @@ public class BookAppointment extends AppCompatActivity {
     public void ClickHome (View view){
         startActivity(new Intent(this, MainActivity.class));
     }
-    public void ClickBook (View view){
-        recreate();
-    }
-    public void ClickLocations (View view){
-        startActivity(new Intent(this, FindLocations.class));
-    }
+    public void ClickBook (View view) { recreate(); }
+    public void ClickLocations (View view){ startActivity(new Intent(this, FindLocations.class)); }
     public void ClickMyAccount (View view){
         startActivity(new Intent(this, MyAccount.class));
     }

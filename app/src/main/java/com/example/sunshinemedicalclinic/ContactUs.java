@@ -75,7 +75,7 @@ public class ContactUs extends AppCompatActivity implements AdapterView.OnItemSe
         startActivity(new Intent(this, MainActivity.class));
     }
     public void ClickBook (View view){
-        recreate();
+        startActivity(new Intent(this, BookAppointment.class));
     }
     public void ClickLocations (View view){
         startActivity(new Intent(this, FindLocations.class));
@@ -83,9 +83,7 @@ public class ContactUs extends AppCompatActivity implements AdapterView.OnItemSe
     public void ClickMyAccount (View view){
         startActivity(new Intent(this, MyAccount.class));
     }
-    public void ClickContactUs(View view){
-        startActivity(new Intent(this, ContactUs.class));
-    }
+    public void ClickContactUs(View view){ recreate(); }
     public void ClickLogout (View view){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Logout").setMessage("Are you sure you want to logout?");

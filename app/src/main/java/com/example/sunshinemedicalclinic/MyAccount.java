@@ -2,8 +2,12 @@ package com.example.sunshinemedicalclinic;
 
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -42,6 +46,7 @@ import java.util.List;
 import java.util.Map;
 
 public class MyAccount extends AppCompatActivity {
+    DrawerLayout drawerLayout;
     String TAG = "MyAccount";
     TextView healthcardNum, name, dob, email, phone, gender ;
     private FirebaseAuth fbAuth = FirebaseAuth.getInstance();
@@ -53,17 +58,13 @@ public class MyAccount extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_account);
-        Log.d(TAG, "created");
+        drawerLayout = findViewById(R.id.drawer_layout);
         healthcardNum = findViewById(R.id.healthcardBox) ;
         name = findViewById(R.id.nameBox) ;
         dob = findViewById(R.id.dobBox) ;
         email = findViewById(R.id.emailBox) ;
         phone = findViewById(R.id.phoneBox) ;
         gender = findViewById(R.id.genderBox) ;
-        Log.d(TAG, "assigned");
-        //email.setText(user.getEmail());
-        Log.d(TAG, "user");
-        Log.d(TAG, "instances");
         db.collection("patients").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -92,5 +93,37 @@ public class MyAccount extends AppCompatActivity {
         });
 
 
+    }
+    public void ClickMenu (View view){
+        MainActivity.closeopenDrawer(drawerLayout);
+    }
+    public void ClickHome (View view){
+        startActivity(new Intent(this, MainActivity.class));
+    }
+    public void ClickBook (View view) { startActivity(new Intent(this, BookAppointment.class)); }
+    public void ClickLocations (View view){ startActivity(new Intent(this, FindLocations.class)); }
+    public void ClickMyAccount (View view){ recreate(); }
+    public void ClickContactUs(View view){
+        startActivity(new Intent(this, ContactUs.class));
+    }
+    public void ClickLogout (View view){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Logout").setMessage("Are you sure you want to logout?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(MyAccount.this, "Logging out", Toast.LENGTH_SHORT).show();
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(MyAccount.this, Login.class));
+                finish();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.show();
     }
 }
