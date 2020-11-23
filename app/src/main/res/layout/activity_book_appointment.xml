@@ -12,120 +12,133 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#FFFFFF"
         android:orientation="vertical">
+
         <include
-            layout="@layout/main_toolbar"/>
-    <TextView
-        android:id="@+id/txtSelect"
-        android:layout_width="115dp"
-        android:layout_height="21dp"
-        android:layout_marginTop="48dp"
-        android:text="Select a location:"
-        android:textColor="#000000"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/rdGrp" />
+            android:id="@+id/include4"
+            layout="@layout/main_toolbar" />
 
-    <Spinner
-        android:id="@+id/clinicSpinner"
-        android:layout_width="194dp"
-        android:layout_height="23dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="48dp"
-        app:layout_constraintStart_toStartOf="@+id/rdGrp"
-        app:layout_constraintTop_toBottomOf="@+id/rdGrp" />
+        <TextView
+            android:id="@+id/txtSelect"
+            android:layout_width="115dp"
+            android:layout_height="21dp"
+            android:layout_marginTop="48dp"
+            android:text="Select a location:"
+            android:textColor="#000000"
+            app:layout_constraintStart_toStartOf="@+id/rdGrp"
+            app:layout_constraintTop_toBottomOf="@+id/rdGrp" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
-        android:text="@string/what_would_you_like_to_book"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <Spinner
+            android:id="@+id/clinicSpinner"
+            android:layout_width="194dp"
+            android:layout_height="23dp"
+            android:layout_marginStart="68dp"
+            android:layout_marginTop="48dp"
+            app:layout_constraintStart_toStartOf="@+id/rdGrp"
+            app:layout_constraintTop_toBottomOf="@+id/rdGrp" />
 
-    <RadioGroup
-        android:id="@+id/rdGrp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
-
-        <RadioButton
-            android:id="@+id/rdBook"
-            android:layout_width="match_parent"
+        <RadioGroup
+            android:id="@+id/rdGrp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/general_appointment"
-            android:textColor="@android:color/secondary_text_light"
-            android:textSize="18sp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include4">
 
-        <RadioButton
-            android:id="@+id/rdTest"
-            android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100dp"
+                android:text="@string/what_would_you_like_to_book"
+                android:textColor="#000000"
+                android:textSize="24sp" />
+
+            <RadioButton
+                android:id="@+id/rdBook"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/general_appointment"
+                android:textColor="@android:color/secondary_text_light"
+                android:textSize="18sp" />
+
+            <RadioButton
+                android:id="@+id/rdTest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/test_for_covid_19"
+                android:textColor="@android:color/secondary_text_light"
+                android:textSize="18sp" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btnDate"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/test_for_covid_19"
-            android:textColor="@android:color/secondary_text_light"
-            android:textSize="18sp" />
-    </RadioGroup>
+            android:layout_marginTop="120dp"
+            android:text="@string/select_a_date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.055"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rdGrp" />
 
-    <Button
-        android:id="@+id/btnDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:text="@string/select_a_date"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.055"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rdGrp" />
+        <TextView
+            android:id="@+id/txtDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btnDate"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.138"
+            app:layout_constraintStart_toEndOf="@+id/btnDate"
+            app:layout_constraintTop_toTopOf="@+id/btnDate"
+            app:layout_constraintVertical_bias="0.551" />
 
-    <TextView
-        android:id="@+id/txtDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/btnDate"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.138"
-        app:layout_constraintStart_toEndOf="@+id/btnDate"
-        app:layout_constraintTop_toTopOf="@+id/btnDate"
-        app:layout_constraintVertical_bias="0.551" />
+        <Button
+            android:id="@+id/btnConfirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/confirm_booking"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnDate"
+            app:layout_constraintVertical_bias="0.386" />
 
-    <Button
-        android:id="@+id/btnConfirm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/confirm_booking"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnDate"
-        app:layout_constraintVertical_bias="0.386" />
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="4dp"
+            android:text="@string/must_book_at_least_one_day_in_advance"
+            app:layout_constraintStart_toStartOf="@+id/btnDate"
+            app:layout_constraintTop_toBottomOf="@+id/btnDate" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="4dp"
-        android:text="@string/must_book_at_least_one_day_in_advance"
-        app:layout_constraintStart_toStartOf="@+id/btnDate"
-        app:layout_constraintTop_toBottomOf="@+id/btnDate" />
+        <EditText
+            android:id="@+id/edtHealthcard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Healthcard #"
+            android:inputType="number"
+            app:layout_constraintBottom_toTopOf="@+id/btnConfirm"
+            app:layout_constraintEnd_toEndOf="@+id/btnConfirm"
+            app:layout_constraintStart_toStartOf="@+id/btnConfirm" />
 
-    <EditText
-        android:id="@+id/edtHealthcard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Healthcard #"
-        android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/btnConfirm"
-        app:layout_constraintEnd_toEndOf="@+id/btnConfirm"
-        app:layout_constraintStart_toStartOf="@+id/btnConfirm" />
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Book an Appointment"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/rdGrp"
+            app:layout_constraintStart_toStartOf="@+id/rdGrp"
+            app:layout_constraintTop_toBottomOf="@+id/include4" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <RelativeLayout

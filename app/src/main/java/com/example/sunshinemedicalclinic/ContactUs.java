@@ -112,8 +112,8 @@ public class ContactUs extends AppCompatActivity implements AdapterView.OnItemSe
         String text = parent.getItemAtPosition(position).toString() ;
         index = position ;
         flag = 1 ;
-        txtPhone.setText("Phone: " + (getResources().getStringArray(R.array.clinicPhones)[index].substring(4)));
-        txtEmail.setText("Email: " + getResources().getStringArray(R.array.clinicEmails)[index]);
+        txtPhone.setText(getResources().getStringArray(R.array.clinicPhones)[index].substring(4));
+        txtEmail.setText(getResources().getStringArray(R.array.clinicEmails)[index]);
     }
 
     @Override

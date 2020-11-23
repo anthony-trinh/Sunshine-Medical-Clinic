@@ -11,19 +11,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <include
-            layout="@layout/main_toolbar"/>
-    <TextView
-        android:id="@+id/nameBox"
-        android:layout_width="189dp"
-        android:layout_height="23dp"
-        android:layout_marginTop="96dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.72"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+        <include
+            android:id="@+id/include"
+            layout="@layout/main_toolbar" />
+
+        <TextView
+            android:id="@+id/nameBox"
+            android:layout_width="189dp"
+            android:layout_height="23dp"
+            android:layout_marginTop="152dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.72"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
         android:id="@+id/healthcardBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -121,6 +124,20 @@
         android:text="@string/sex"
         app:layout_constraintEnd_toStartOf="@+id/genderBox"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My Account"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include"
+            app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <RelativeLayout
