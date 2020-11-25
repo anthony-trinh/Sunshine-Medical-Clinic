@@ -22,15 +22,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        System.out.println("1");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //Show app icon on action bar
         //getSupportActionBar().setDisplayShowHomeEnabled(true);
         //getSupportActionBar().setLogo(R.mipmap.ic_launcher);
         //getSupportActionBar().setDisplayUseLogoEnabled(true);
-        Log.d("MainActivity", "created");
-        System.out.println("2");
         drawerLayout = findViewById(R.id.drawer_layout);
     }
 

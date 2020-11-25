@@ -39,16 +39,21 @@ import com.google.firebase.firestore.auth.User;
 import com.google.rpc.context.AttributeContext;
 
 import java.lang.ref.Reference;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public class MyAccount extends AppCompatActivity {
     DrawerLayout drawerLayout;
-    String TAG = "MyAccount";
-    TextView healthcardNum, name, dob, email, phone, gender ;
+    String TAG = "MyAccount"; String usrEmail;
+    TextView healthcardNum, name, dob, email, phone, gender, pastAppt, futAppt ;
     private FirebaseAuth fbAuth = FirebaseAuth.getInstance();
     private FirebaseFirestore db  = FirebaseFirestore.getInstance();
     private CollectionReference ref ;
@@ -65,14 +70,19 @@ public class MyAccount extends AppCompatActivity {
         email = findViewById(R.id.emailBox) ;
         phone = findViewById(R.id.phoneBox) ;
         gender = findViewById(R.id.genderBox) ;
+        pastAppt = findViewById(R.id.txtPAppt);
+        futAppt = findViewById(R.id.txtFAppt);
+        pastAppt.setText(""); futAppt.setText("");
+        usrEmail = user.getEmail();
+        final DateFormat date = new SimpleDateFormat("MMM dd, yyyy", Locale.ENGLISH);
         db.collection("patients").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                Log.d(TAG, "attempt");
                 if (task.isSuccessful()) {
-                    for(QueryDocumentSnapshot document : task.getResult())
+                    Log.d(TAG, "task#1 successful");
+                    for(QueryDocumentSnapshot document : task.getResult()) {
                         if (document.exists()) {
-                            if(document.get("email").equals(user.getEmail())) {
+                            if ((document.get("email")).equals(usrEmail)) {
                                 Log.d(TAG, "DocumentSnapshot data: " + document.get("healthcard"));
                                 healthcardNum.setText(document.get("healthcard").toString());
                                 String fName = document.get("fname").toString();
@@ -86,13 +96,47 @@ public class MyAccount extends AppCompatActivity {
                         } else {
                             Log.d(TAG, "No such document");
                         }
+                    }
                 } else {
                     Log.d(TAG, "get failed with ", task.getException());
                 }
             }
         });
-
-
+        db.collection("appointment").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                Date currentDate=java.util.Calendar.getInstance().getTime();
+                Log.d(TAG, "is successful: " + currentDate);
+                if (task.isSuccessful()) {
+                    for(QueryDocumentSnapshot document : task.getResult()) {
+                        if (document.exists()) {
+                            if ((document.get("email")).equals(usrEmail)) {
+                                Log.d(TAG, "found user");
+                                try {
+                                    if (currentDate.before(date.parse(String.valueOf(document.get("date"))))) {
+                                        Log.d(TAG, "found date future");
+                                        futAppt.append(document.get("type")+": ");
+                                        futAppt.append(document.get("date").toString());
+                                        futAppt.append("\n");
+                                    } else {
+                                        Log.d(TAG, "found date past");
+                                        pastAppt.append(document.get("type")+": ");
+                                        pastAppt.append(document.get("date").toString());
+                                        pastAppt.append("\n");
+                                    }
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        } else {
+                            Log.d(TAG, "No such document");
+                        }
+                    }
+                } else {
+                    Log.d(TAG, "get failed with ", task.getException());
+                }
+            }
+        });
     }
     public void ClickMenu (View view){
         MainActivity.closeopenDrawer(drawerLayout);
