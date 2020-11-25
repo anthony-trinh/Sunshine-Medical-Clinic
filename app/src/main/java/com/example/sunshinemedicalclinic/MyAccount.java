@@ -79,7 +79,6 @@ public class MyAccount extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
-                    Log.d(TAG, "task#1 successful");
                     for(QueryDocumentSnapshot document : task.getResult()) {
                         if (document.exists()) {
                             if ((document.get("email")).equals(usrEmail)) {
@@ -106,20 +105,16 @@ public class MyAccount extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 Date currentDate=java.util.Calendar.getInstance().getTime();
-                Log.d(TAG, "is successful: " + currentDate);
                 if (task.isSuccessful()) {
                     for(QueryDocumentSnapshot document : task.getResult()) {
                         if (document.exists()) {
                             if ((document.get("email")).equals(usrEmail)) {
-                                Log.d(TAG, "found user");
                                 try {
                                     if (currentDate.before(date.parse(String.valueOf(document.get("date"))))) {
-                                        Log.d(TAG, "found date future");
                                         futAppt.append(document.get("type")+": ");
                                         futAppt.append(document.get("date").toString());
                                         futAppt.append("\n");
                                     } else {
-                                        Log.d(TAG, "found date past");
                                         pastAppt.append(document.get("type")+": ");
                                         pastAppt.append(document.get("date").toString());
                                         pastAppt.append("\n");
