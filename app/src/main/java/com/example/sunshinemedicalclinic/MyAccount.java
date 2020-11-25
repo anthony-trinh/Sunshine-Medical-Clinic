@@ -150,24 +150,7 @@ public class MyAccount extends AppCompatActivity {
     public void ClickContactUs(View view){
         startActivity(new Intent(this, ContactUs.class));
     }
-    public void ClickLogout (View view){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Logout").setMessage("Are you sure you want to logout?");
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(MyAccount.this, "Logging out", Toast.LENGTH_SHORT).show();
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(MyAccount.this, Login.class));
-                finish();
-            }
-        });
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-        builder.show();
+    public void ClickSettings (View view){
+        startActivity(new Intent(this, settings.class)) ;
     }
 }

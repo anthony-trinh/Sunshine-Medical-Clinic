@@ -84,25 +84,8 @@ public class ContactUs extends AppCompatActivity implements AdapterView.OnItemSe
         startActivity(new Intent(this, MyAccount.class));
     }
     public void ClickContactUs(View view){ recreate(); }
-    public void ClickLogout (View view){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Logout").setMessage("Are you sure you want to logout?");
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(ContactUs.this, "Logging out", Toast.LENGTH_SHORT).show();
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(ContactUs.this, Login.class));
-                finish();
-            }
-        });
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-        builder.show();
+    public void ClickSettings (View view){
+        startActivity(new Intent(this, settings.class)) ;
     }
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

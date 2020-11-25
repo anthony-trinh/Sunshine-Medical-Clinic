@@ -3,6 +3,7 @@ package com.example.sunshinemedicalclinic;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -18,8 +19,7 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class settings extends AppCompatActivity {
-
-
+    DrawerLayout drawerLayout;
     private SharedPreferences sp ;
     private SharedPreferences.Editor spEditor ;
     private Boolean nightModeFlag ;
@@ -32,6 +32,7 @@ public class settings extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+        drawerLayout = findViewById(R.id.drawer_layout);
         final Context c = this ;
 
         sp = getSharedPreferences("AppSettingsPref",0) ;
@@ -52,23 +53,23 @@ public class settings extends AppCompatActivity {
             darkModeButton.setText("Enable Dark Mode");
         }
 
-       darkModeButton.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               if(nightModeFlag){
-                   AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO) ;
-                   spEditor.putBoolean("NightMode", false) ;
-                   spEditor.apply();
-                   darkModeButton.setText("Disable Dark Mode");
-               }
-               else{
-                   AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES) ;
-                   spEditor.putBoolean("NightMode", true) ;
-                   spEditor.apply() ;
-                   darkModeButton.setText("Enable Dark Mode");
-               }
-           }
-       });
+        darkModeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(nightModeFlag){
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO) ;
+                    spEditor.putBoolean("NightMode", false) ;
+                    spEditor.apply();
+                    darkModeButton.setText("Disable Dark Mode");
+                }
+                else{
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES) ;
+                    spEditor.putBoolean("NightMode", true) ;
+                    spEditor.apply() ;
+                    darkModeButton.setText("Enable Dark Mode");
+                }
+            }
+        });
 
         muteSoundsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,9 +113,22 @@ public class settings extends AppCompatActivity {
                 builder.show();
             }
         });
-
-
-
-
     }
+    public void ClickMenu (View view){
+        MainActivity.closeopenDrawer(drawerLayout);
+    }
+    public void ClickHome (View view){
+        startActivity(new Intent(this, MainActivity.class));
+    }
+    public void ClickBook (View view){
+        startActivity(new Intent(this, BookAppointment.class));
+    }
+    public void ClickLocations (View view){
+        startActivity(new Intent(this, FindLocations.class));
+    }
+    public void ClickMyAccount (View view){
+        startActivity(new Intent(this, MyAccount.class));
+    }
+    public void ClickContactUs(View view){ startActivity(new Intent(this, ContactUs.class)) ; }
+    public void ClickSettings (View view){ recreate(); }
 }
