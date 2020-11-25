@@ -1,155 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/mainBackground"
     android:orientation="vertical">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:layout_margin="16dp"
-        android:src="@mipmap/ic_launcher"/>
+        android:background="@color/mainBackground"
+        android:src="@mipmap/ic_launcher" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/mainBackground"
         android:text="Sunshine Medical Clinic"
+        android:textAlignment="center"
+        android:textColor="@color/mainText"
         android:textSize="20sp"
-        android:textStyle="bold"
-        android:textAlignment="center"/>
+        android:textStyle="bold" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:background="@color/mainBackground"
         android:gravity="center_vertical"
-        android:onClick="ClickHome">
+        android:onClick="ClickHome"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_weight="1"
+            android:background="@color/mainBackground"
+            android:padding="12dp"
             android:text="Home"
-            android:padding="12dp"
-            android:layout_marginStart="16dp"/>
-        
+            android:textColor="@color/mainText" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="48dp"
-            android:src="@drawable/ic_home"/>
-    </LinearLayout>
-    
-    <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:gravity="center_vertical"
-    android:onClick="ClickBook">
-
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Schedule Appointment"
-        android:padding="12dp"
-        android:layout_marginStart="16dp"/>
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="48dp"
-        android:src="@drawable/ic_book"/>
+            android:src="@drawable/ic_home" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:background="@color/mainBackground"
         android:gravity="center_vertical"
-        android:onClick="ClickLocations">
+        android:onClick="ClickBook"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_weight="1"
+            android:background="@color/mainBackground"
+            android:padding="12dp"
+            android:text="Schedule Appointment"
+            android:textColor="@color/mainText" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="48dp"
+            android:src="@drawable/ic_book" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/mainBackground"
+        android:gravity="center_vertical"
+        android:onClick="ClickLocations"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:background="@color/mainBackground"
+            android:padding="12dp"
             android:text="Find Our Locations"
-            android:padding="12dp"
-            android:layout_marginStart="16dp"/>
+            android:textColor="@color/mainText" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="48dp"
-            android:src="@drawable/ic_location"/>
+            android:src="@drawable/ic_location" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:background="@color/mainBackground"
         android:gravity="center_vertical"
-        android:onClick="ClickMyAccount">
+        android:onClick="ClickMyAccount"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_weight="1"
+            android:background="@color/mainBackground"
+            android:padding="12dp"
             android:text="My Account"
-            android:padding="12dp"
-            android:layout_marginStart="16dp"/>
+            android:textColor="@color/mainText" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="48dp"
-            android:src="@drawable/ic_my_account"/>
+            android:src="@drawable/ic_my_account" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:background="@color/mainBackground"
         android:gravity="center_vertical"
-        android:onClick="ClickContactUs">
-
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Contact Us"
-        android:padding="12dp"
-        android:layout_marginStart="16dp"/>
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="48dp"
-        android:src="@drawable/ic_about_us"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:onClick="ClickLogout">
+        android:onClick="ClickContactUs"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_weight="1"
-            android:text="Logout"
+            android:background="@color/mainBackground"
             android:padding="12dp"
-            android:layout_marginStart="16dp"/>
+            android:text="Contact Us"
+            android:textColor="@color/mainText" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="48dp"
-            android:src="@drawable/ic_logout"/>
+            android:src="@drawable/ic_about_us" />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:background="@color/mainBackground"
+        android:gravity="center_vertical"
+        android:onClick="ClickSettings"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:background="@color/mainBackground"
+            android:padding="12dp"
+            android:text="Settings"
+            android:textColor="@color/mainText" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="48dp"
+            android:src="@drawable/ic_settings" />
+    </LinearLayout>
+
 </LinearLayout>

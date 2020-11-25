@@ -8,6 +8,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
@@ -42,6 +43,9 @@ public class BookAppointment extends AppCompatActivity {
     String clinicName ;
     int index ;
     MediaPlayer failSound = new MediaPlayer();
+    private SharedPreferences sp ;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +58,9 @@ public class BookAppointment extends AppCompatActivity {
         clinicName = getIntent().getStringExtra("selectClinic") ;
         index = clinicNames.indexOf(clinicName) ;
         clinicSpinner.setSelection(index) ;
+
+
+        sp = getSharedPreferences("AppSettingsPref",0) ;
 
 
         failSound = MediaPlayer.create(this, R.raw.xpshutdown);
@@ -119,9 +126,15 @@ public class BookAppointment extends AppCompatActivity {
                             });
                 }
                 else{
-                    failSound.stop();
-                    failSound = MediaPlayer.create(BookAppointment.this, R.raw.xpshutdown);
-                    failSound.start();
+                    if(!sp.getBoolean("Sound",false) ){
+                        failSound.stop();
+                        failSound = MediaPlayer.create(BookAppointment.this, R.raw.xpshutdown);
+                        failSound.start() ;
+                    }
+                    else{
+                        ;
+                    }
+
                     Toast.makeText(getApplicationContext(),"Invalid Date: Select another date.", Toast.LENGTH_SHORT).show();
                 }
             }

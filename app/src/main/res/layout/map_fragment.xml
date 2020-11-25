@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/mainBackground">
 
     <TextView
         android:id="@+id/hoursOfOperation"
@@ -11,6 +12,7 @@
         android:layout_height="98dp"
         android:layout_marginTop="20dp"
         android:text="Monday: 8:00am - 6:00pm\nTuesday: 8:00am - 6:00pm\nWednesday: 8:00am - 6:00pm\nThursday: 8:00am - 6:00pm\nFriday 8:00am - 6:00pm\nSaturday: 10:00am - 3:00pm\nSunday: Closed"
+        android:textColor="@color/mainText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/clinicNameMapFragment" />
@@ -21,15 +23,17 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="textt"
+        android:textColor="@color/mainText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/bookAppointmentButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="178dp"
+        android:layout_height="47dp"
         android:layout_marginTop="20dp"
+        android:background="@color/colorButton"
         android:text="Book an appointment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,9 +41,10 @@
 
     <Button
         android:id="@+id/contactButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="101dp"
+        android:layout_height="49dp"
         android:layout_marginTop="76dp"
+        android:background="@color/colorButton"
         android:text="Contact Us"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

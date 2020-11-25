@@ -12,7 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FFFFFF"
+        android:background="@color/mainBackground"
         android:orientation="vertical">
 
         <include
@@ -25,7 +25,7 @@
             android:layout_height="21dp"
             android:layout_marginTop="48dp"
             android:text="Select a location:"
-            android:textColor="#000000"
+            android:textColor="@color/mainText"
             app:layout_constraintStart_toStartOf="@+id/rdGrp"
             app:layout_constraintTop_toBottomOf="@+id/rdGrp" />
 
@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="100dp"
                 android:text="@string/what_would_you_like_to_book"
-                android:textColor="#000000"
+                android:textColor="@color/mainText"
                 android:textSize="24sp" />
 
             <RadioButton
@@ -58,7 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/general_appointment"
-                android:textColor="@android:color/secondary_text_light"
+                android:textColor="@color/textAlt"
                 android:textSize="18sp" />
 
             <RadioButton
@@ -66,16 +66,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/test_for_covid_19"
-                android:textColor="@android:color/secondary_text_light"
+                android:textColor="@color/textAlt"
                 android:textSize="18sp" />
         </RadioGroup>
 
         <Button
             android:id="@+id/btnDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="112dp"
+            android:layout_height="42dp"
             android:layout_marginTop="120dp"
+            android:background="@color/colorButton"
             android:text="@string/select_a_date"
+            android:textColor="@color/mainText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.055"
             app:layout_constraintStart_toStartOf="parent"
@@ -95,43 +97,49 @@
 
         <Button
             android:id="@+id/btnConfirm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="142dp"
+            android:layout_height="49dp"
+            android:background="@color/colorButton"
             android:text="@string/confirm_booking"
+            android:textColor="@color/mainText"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnDate"
-            app:layout_constraintVertical_bias="0.386" />
+            app:layout_constraintVertical_bias="0.44" />
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="8dp"
             android:text="@string/must_book_at_least_one_day_in_advance"
             app:layout_constraintStart_toStartOf="@+id/btnDate"
             app:layout_constraintTop_toBottomOf="@+id/btnDate" />
 
         <EditText
             android:id="@+id/edtHealthcard"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="231dp"
+            android:layout_height="45dp"
+            android:background="@color/mainBackground"
             android:ems="10"
             android:hint="Healthcard #"
             android:inputType="number"
+            android:textColor="@color/mainText"
             app:layout_constraintBottom_toTopOf="@+id/btnConfirm"
             app:layout_constraintEnd_toEndOf="@+id/btnConfirm"
-            app:layout_constraintStart_toStartOf="@+id/btnConfirm" />
+            app:layout_constraintHorizontal_bias="0.508"
+            app:layout_constraintStart_toStartOf="@+id/btnConfirm"
+            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            app:layout_constraintVertical_bias="1.0" />
 
         <TextView
             android:id="@+id/textView14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Book an Appointment"
-            android:textColor="#000000"
+            android:textColor="@color/mainText"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/rdGrp"

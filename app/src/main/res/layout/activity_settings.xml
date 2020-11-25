@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mainBackground"
+    tools:context=".settings">
+
+    <include
+        android:id="@+id/include3"
+        layout="@layout/main_toolbar"
+        android:layout_width="410dp"
+        android:layout_height="53dp"
+        android:background="@color/mainBackground" />
+
+    <TextView
+        android:id="@+id/settingsTitle"
+        android:layout_width="334dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="56dp"
+        android:text="Settings"
+        android:textAlignment="center"
+        android:textColor="@color/mainText"
+        android:textColorHighlight="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include3" />
+
+    <Button
+        android:id="@+id/muteSoundButton"
+        android:layout_width="123dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="40dp"
+        android:background="@color/colorButton"
+        android:text="Mute Sounds"
+        android:textColor="@color/mainText"
+        app:layout_constraintStart_toStartOf="@+id/darkModeButton"
+        app:layout_constraintTop_toBottomOf="@+id/darkModeButton" />
+
+    <Button
+        android:id="@+id/darkModeButton"
+        android:layout_width="157dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="76dp"
+        android:background="@color/colorButton"
+        android:text="Enable Dark Mode"
+        android:textColor="@color/mainText"
+        app:layout_constraintStart_toStartOf="@+id/settingsTitle"
+        app:layout_constraintTop_toBottomOf="@+id/settingsTitle" />
+
+    <Button
+        android:id="@+id/logoutButton"
+        android:layout_width="102dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="40dp"
+        android:background="@color/colorButton"
+        android:text="Logout"
+        android:textColor="@color/mainText"
+        app:layout_constraintStart_toStartOf="@+id/muteSoundButton"
+        app:layout_constraintTop_toBottomOf="@+id/muteSoundButton" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

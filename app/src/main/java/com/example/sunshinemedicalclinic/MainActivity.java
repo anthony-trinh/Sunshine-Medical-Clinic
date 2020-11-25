@@ -71,10 +71,14 @@ public class MainActivity extends AppCompatActivity {
     {
         startActivity(new Intent(this, MyAccount.class));
     }
+    public void ClickSettings (View view){
+        startActivity(new Intent(this, settings.class)) ;
+    }
     public void ClickContactUs (View view)
     {
         startActivity(new Intent(this, ContactUs.class));
     }
+    
     public void ClickLogout(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Logout").setMessage("Are you sure you want to logout?");

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/common_google_signin_btn_text_dark_pressed"
+    android:background="@color/mainBackground"
     tools:context=".Register">
 
     <TextView
@@ -14,7 +14,7 @@
         android:layout_marginTop="96dp"
         android:text="@string/create_new_account"
         android:textAlignment="center"
-        android:textColor="#000000"
+        android:textColor="@color/mainText"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -28,6 +28,7 @@
         android:layout_marginTop="44dp"
         android:text="@string/healthcard"
         android:textColor="#000000"
+        android:textColorHighlight="@color/mainText"
         app:layout_constraintEnd_toStartOf="@+id/regHealthcardNo"
         app:layout_constraintStart_toStartOf="@+id/txtTitle"
         app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
@@ -42,6 +43,7 @@
         android:ems="10"
         android:hint="@string/_1234567890"
         android:inputType="number"
+        android:textColor="@color/textAlt"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/txtTitle"
         app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
@@ -54,6 +56,7 @@
         android:layout_marginEnd="12dp"
         android:text="@string/first_name"
         android:textColor="#000000"
+        android:textColorHighlight="@color/mainText"
         app:layout_constraintEnd_toStartOf="@+id/regFName"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/txtHealthcard"
@@ -67,6 +70,7 @@
         android:ems="10"
         android:hint="@string/john"
         android:inputType="textPersonName"
+        android:textColor="@color/textAlt"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/regHealthcardNo"
         app:layout_constraintTop_toBottomOf="@+id/regHealthcardNo" />
@@ -79,6 +83,7 @@
         android:layout_marginEnd="4dp"
         android:text="@string/last_name"
         android:textColor="#000000"
+        android:textColorHighlight="@color/mainText"
         app:layout_constraintEnd_toStartOf="@+id/regLName"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/txtFName"
@@ -92,6 +97,7 @@
         android:ems="10"
         android:hint="@string/smith"
         android:inputType="textPersonName"
+        android:textColor="@color/textAlt"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/regFName"
         app:layout_constraintTop_toBottomOf="@+id/regFName" />
@@ -104,6 +110,7 @@
         android:layout_marginEnd="4dp"
         android:text="@string/sex"
         android:textColor="#000000"
+        android:textColorHighlight="@color/mainText"
         app:layout_constraintEnd_toStartOf="@+id/regSex"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/txtLName"
@@ -117,6 +124,7 @@
         android:ems="10"
         android:hint="@string/exSex"
         android:inputType="textPersonName"
+        android:textColor="@color/textAlt"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/regLName"
         app:layout_constraintTop_toBottomOf="@+id/regLName" />
@@ -129,6 +137,7 @@
         android:ems="10"
         android:hint="@string/exPhone"
         android:inputType="phone"
+        android:textColor="@color/textAlt"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/regSex"
         app:layout_constraintTop_toBottomOf="@+id/regSex" />
@@ -141,6 +150,7 @@
         android:layout_marginEnd="4dp"
         android:text="@string/date_of_birth"
         android:textColor="#000000"
+        android:textColorHighlight="@color/mainText"
         app:layout_constraintEnd_toStartOf="@+id/regDOB"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -154,6 +164,7 @@
         android:ems="10"
         android:hint="@string/exDate"
         android:inputType="date"
+        android:textColor="@color/textAlt"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/regPhoneNo"
         app:layout_constraintTop_toBottomOf="@+id/regPhoneNo" />
@@ -166,6 +177,7 @@
         android:layout_marginEnd="40dp"
         android:text="@string/email"
         android:textColor="#000000"
+        android:textColorHighlight="@color/mainText"
         app:layout_constraintEnd_toStartOf="@+id/regEmail"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/txtDOB"
@@ -191,6 +203,7 @@
         android:layout_marginEnd="20dp"
         android:text="@string/password"
         android:textColor="#000000"
+        android:textColorHighlight="@color/mainText"
         app:layout_constraintEnd_toStartOf="@+id/regPswd"
         app:layout_constraintStart_toStartOf="@+id/logEmail"
         app:layout_constraintTop_toTopOf="@+id/regPswd" />
@@ -205,7 +218,8 @@
         android:inputType="textPassword"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/regEmail"
-        app:layout_constraintTop_toBottomOf="@+id/regEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/regEmail"
+        android:textColor="@color/textAlt" />
 
     <TextView
         android:id="@+id/txtPhone"
@@ -215,6 +229,7 @@
         android:layout_marginEnd="4dp"
         android:text="@string/phone_number"
         android:textColor="#000000"
+        android:textColorHighlight="@color/mainText"
         app:layout_constraintEnd_toStartOf="@+id/regPhoneNo"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/txtSex"
@@ -225,7 +240,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:background="@color/colorButton"
         android:text="@string/register"
+        android:textColorHighlight="@color/mainText"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -238,7 +255,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/already_registered_login_here"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/mainText"
         android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

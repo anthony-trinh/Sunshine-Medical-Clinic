@@ -6,9 +6,11 @@
     android:layout_height="match_parent"
     android:id="@+id/drawer_layout"
     tools:context=".ContactUs">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/mainBackground"
         android:orientation="vertical">
 
         <include
@@ -20,32 +22,35 @@
             android:layout_width="329dp"
             android:layout_height="31dp"
             android:layout_marginTop="144dp"
+            android:background="@color/mainBackground"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-        android:id="@+id/callButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="104dp"
-        android:layout_marginTop="48dp"
-        android:background="@drawable/rounded_corners"
-        android:text="@string/call"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/txt"
-        app:layout_constraintTop_toBottomOf="@+id/txt" />
+            android:id="@+id/callButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="104dp"
+            android:layout_marginTop="48dp"
+            android:background="@color/colorButton"
+            android:text="@string/call"
+            android:textColor="@color/mainText"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/txt"
+            app:layout_constraintTop_toBottomOf="@+id/txt" />
 
-    <Button
-        android:id="@+id/emailButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/rounded_corners"
-        android:text="email"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/callButton"
-        app:layout_constraintTop_toBottomOf="@+id/callButton" />
+        <Button
+            android:id="@+id/emailButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:background="@color/colorButton"
+            android:text="email"
+            android:textColor="@color/mainText"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/callButton"
+            app:layout_constraintTop_toBottomOf="@+id/callButton" />
 
         <TextView
             android:id="@+id/txtPhoneNo"
@@ -53,6 +58,7 @@
             android:layout_height="23dp"
             android:layout_marginStart="4dp"
             android:layout_marginTop="80dp"
+            android:background="@color/mainBackground"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@+id/clinicSpinner"
             app:layout_constraintTop_toBottomOf="@+id/clinicSpinner" />
@@ -63,6 +69,7 @@
             android:layout_height="25dp"
             android:layout_marginStart="4dp"
             android:layout_marginTop="36dp"
+            android:background="@color/mainBackground"
             android:textSize="18sp"
             app:autoSizeTextType="uniform"
             app:layout_constraintStart_toStartOf="@+id/txtPhoneNo"
@@ -75,6 +82,7 @@
             android:layout_marginStart="4dp"
             android:layout_marginTop="48dp"
             android:text="@string/or_automatically_contact_us"
+            android:textColor="@color/mainText"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="@+id/logEmail"
             app:layout_constraintTop_toBottomOf="@+id/logEmail" />
@@ -84,6 +92,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Select a Clinic for Information!"
+            android:textColor="@color/mainText"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/clinicSpinner"
@@ -98,6 +107,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/phone_number"
+            android:textColor="@color/textAlt"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/txtPhoneNo"
             app:layout_constraintEnd_toEndOf="@+id/txtPhoneNo"
@@ -109,6 +119,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/email"
+            android:textColor="@color/textAlt"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/logEmail"
             app:layout_constraintEnd_toEndOf="@+id/logEmail"
@@ -122,7 +133,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Contact Us!"
-            android:textColor="#000000"
+            android:textColor="@color/mainText"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/textView9"
