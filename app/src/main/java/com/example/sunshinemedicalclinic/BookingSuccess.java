@@ -38,7 +38,7 @@ public class BookingSuccess extends DialogFragment implements View.OnClickListen
         returnButton.setOnClickListener(this) ;
         calendarButton.setOnClickListener(this) ;
         this.setAddress();
-        bookingInfo.setText("Date: " + time + "\nLocation: " + clinic);
+        bookingInfo.setText("Type: " + type + "\nDate: " + time + "\nLocation: " + clinic);
         return view ;
     }
 
@@ -68,7 +68,6 @@ public class BookingSuccess extends DialogFragment implements View.OnClickListen
     public void setClinic(String c){
         clinic = c ;
     }
-
     public void setType(String t){
         type = t ;
     }

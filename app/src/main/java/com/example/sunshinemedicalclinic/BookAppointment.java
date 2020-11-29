@@ -50,8 +50,9 @@ public class BookAppointment extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     private static final String TAG = "BookAppointment";
     String clinicName;
-    int index, healthcard;
+    int index;
     MediaPlayer failSound = new MediaPlayer();
+    MediaPlayer successSound = new MediaPlayer();
     private SharedPreferences sp ;
 
 
@@ -73,10 +74,10 @@ public class BookAppointment extends AppCompatActivity {
 
 
         failSound = MediaPlayer.create(this, R.raw.xpshutdown);
+        successSound = MediaPlayer.create(this, R.raw.cheer);
         Button dateSelect = findViewById(R.id.btnDate);
         Button confirm = findViewById(R.id.btnConfirm);
         final TextView dateSelected = findViewById(R.id.txtDate);
-        //final EditText healthcard = findViewById(R.id.edtHealthcard);
         final DateFormat date = DateFormat.getDateInstance();
         final Calendar c = Calendar.getInstance();
 
@@ -125,11 +126,12 @@ public class BookAppointment extends AppCompatActivity {
                                     bookingSuccess.setClinic(clinicSpinner.getSelectedItem().toString());
                                     bookingSuccess.setTime(date.format(c.getTime()));
                                     if (book.isChecked()) {
-                                        bookingSuccess.setType("General appointment at " + clinicSpinner.getSelectedItem().toString());
+                                        bookingSuccess.setType("General Appointment");
                                     }
                                     if (covidTest.isChecked()) {
-                                        bookingSuccess.setType("Booking test at " + clinicSpinner.getSelectedItem().toString());
+                                        bookingSuccess.setType("Covid-19 Test");
                                     }
+                                    successSound.start() ;
                                     bookingSuccess.show(getSupportFragmentManager(), "fragment");
                                 }
                             })

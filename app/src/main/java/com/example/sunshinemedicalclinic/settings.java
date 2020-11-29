@@ -41,7 +41,7 @@ public class settings extends AppCompatActivity {
         darkModeButton = findViewById(R.id.darkModeButton) ;
         muteSoundsButton = findViewById(R.id.muteSoundButton) ;
         logout = findViewById(R.id.logoutButton) ;
-        muteFlag = false ;
+        muteFlag = false;
 
 
         if(nightModeFlag){
@@ -52,6 +52,7 @@ public class settings extends AppCompatActivity {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO) ;
             darkModeButton.setText("Enable Dark Mode");
         }
+
 
         darkModeButton.setOnClickListener(new View.OnClickListener() {
             @Override
