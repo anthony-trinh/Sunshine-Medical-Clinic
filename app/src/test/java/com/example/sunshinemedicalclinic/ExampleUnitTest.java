@@ -1,6 +1,8 @@
 package com.example.sunshinemedicalclinic;
-
+import org.junit.Before;
+import org.junit.runner.RunWith;
 import org.junit.Test;
+import org.junit.runners.JUnit4;
 
 import static org.junit.Assert.*;
 

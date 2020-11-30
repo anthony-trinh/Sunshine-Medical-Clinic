@@ -2,12 +2,9 @@ package com.example.sunshinemedicalclinic;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.provider.CalendarContract;
 import android.view.LayoutInflater;
@@ -19,8 +16,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class BookingSuccess extends DialogFragment implements View.OnClickListener {
 
@@ -61,21 +56,28 @@ public class BookingSuccess extends DialogFragment implements View.OnClickListen
         }
     }
 
-    public void setTime(String t){
-        time = t ;
-    }
-
+    public void setTime(String t){ time = t ; }
     public void setClinic(String c){
         clinic = c ;
     }
     public void setType(String t){
         type = t ;
     }
-
     public void setAddress(){
         ArrayList<String> addresses = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.clinicAddresses))) ;
         ArrayList<String> names = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.clinicNames))) ;
         int index = names.indexOf(clinic) ;
         address = addresses.get(index) ;
     }
+
+    public String getTime(){
+        return this.time ;
+    }
+    public String getClinic(){
+        return this.clinic;
+    }
+    public String getType(){
+        return this.type;
+    }
+    public String getAddress() { return this.address; }
 }
